@@ -1,9 +1,10 @@
-// Place url in a constant variable
+// Placing the url in a constant variable
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
 // Fetching  the JSON data and console log it
 d3.json(url).then(function(data) {
-  console.log(data);
+  // displaying  the data in the console
+    console.log(data);
 });
 
 // Initializing the dashboard at start up
@@ -43,16 +44,16 @@ function init() {
     });
 };
 
-// Function that populates metadata info
+// Function that populates metadata information
 function buildMetadata(sample) {
 
-    // Use D3 to retrieve all of the data
+    // Using D3 to retrieve all of the data
     d3.json(url).then((data) => {
 
         // Retrieve all metadata
         let metadata = data.metadata;
 
-        // Filter based on the value of the sample
+        // Filter the information  based on the value of the sample
         let value = metadata.filter(result => result.id == sample);
 
         // Log the array of metadata objects after the have been filtered
@@ -61,13 +62,13 @@ function buildMetadata(sample) {
         // Get the first index from the array
         let valueData = value[0];
 
-        // Clear out metadata
+        // Clearing out the metadata
         d3.select("#sample-metadata").html("");
 
-        // Use Object.entries to add each key/value pair to the panel
+        // Using Object.entries, add each key/value pair to the panel
         Object.entries(valueData).forEach(([key,value]) => {
 
-            // Log the individual key/value pairs as they are being appended to the metadata panel
+            // Logging the individual key/value pairs as they are being appended to the metadata panel
             console.log(key,value);
 
             d3.select("#sample-metadata").append("h5").text(`${key}: ${value}`);
@@ -91,7 +92,7 @@ function buildBarChart(sample) {
         // Get the first index from the array
         let valueData = value[0];
 
-        // Get the otu_ids, lables, and sample values
+        // Get the otu_ids, labels, and sample values
         let otu_ids = valueData.otu_ids;
         let otu_labels = valueData.otu_labels;
         let sample_values = valueData.sample_values;
@@ -100,14 +101,14 @@ function buildBarChart(sample) {
         console.log(otu_ids,otu_labels,sample_values);
 
         // Set top ten items to display in descending order
-        let yticks = otu_ids.slice(0,10).map(id => `OTU ${id}`).reverse();
-        let xticks = sample_values.slice(0,10).reverse();
+        let y_ticks = otu_ids.slice(0,10).map(id => `OTU ${id}`).reverse();
+        let x_ticks = sample_values.slice(0,10).reverse();
         let labels = otu_labels.slice(0,10).reverse();
 
         // Set up the trace for the bar chart
         let trace = {
-            x: xticks,
-            y: yticks,
+            x: x_ticks,
+            y: y_ticks,
             text: labels,
             type: "bar",
             orientation: "h"
@@ -138,14 +139,13 @@ function buildBubbleChart(sample) {
         // Get the first index from the array
         let valueData = value[0];
 
-        // Get the otu_ids, lables, and sample values
+        // Get the otu_ids, labels, and sample values
         let otu_ids = valueData.otu_ids;
         let otu_labels = valueData.otu_labels;
         let sample_values = valueData.sample_values;
 
         // Log the data to the console
         console.log(otu_ids,otu_labels,sample_values);
-        
         // Set up the trace for bubble chart
         let trace1 = {
             x: otu_ids,
