@@ -1,12 +1,12 @@
 // Place url in a constant variable
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
-// Fetch the JSON data and console log it
+// Fetching  the JSON data and console log it
 d3.json(url).then(function(data) {
   console.log(data);
 });
 
-// Initialize the dashboard at start up
+// Initializing the dashboard at start up
 function init() {
 
     // Use D3 to select the dropdown menu
@@ -103,7 +103,7 @@ function buildBarChart(sample) {
         let yticks = otu_ids.slice(0,10).map(id => `OTU ${id}`).reverse();
         let xticks = sample_values.slice(0,10).reverse();
         let labels = otu_labels.slice(0,10).reverse();
-        
+
         // Set up the trace for the bar chart
         let trace = {
             x: xticks,
@@ -128,7 +128,7 @@ function buildBubbleChart(sample) {
 
     // Use D3 to retrieve all of the data
     d3.json(url).then((data) => {
-        
+       
         // Retrieve all sample data
         let sampleInfo = data.samples;
 
