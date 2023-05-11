@@ -184,7 +184,7 @@ function optionChanged(value) {
     buildGaugeChart(value);
 };
 
-// Call the initialize function
+// Calling up the initialize function
 init();
 
 
