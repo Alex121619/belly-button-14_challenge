@@ -129,7 +129,6 @@ function buildBubbleChart(sample) {
 
     // Use D3 to retrieve all of the data
     d3.json(url).then((data) => {
-       
         // Retrieve all sample data
         let sampleInfo = data.samples;
 
@@ -171,13 +170,13 @@ function buildBubbleChart(sample) {
     });
 };
 
-// Function that updates dashboard when sample is changed
-function optionChanged(value) { 
+// Function that updates the dashboard when the sample is changed
+function optionChanged(value) {
 
-    // Log the new value
-    console.log(value); 
+    // Logging the new value
+    console.log(value);
 
-    // Call all functions 
+    // Call all functions
     buildMetadata(value);
     buildBarChart(value);
     buildBubbleChart(value);
